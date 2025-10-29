@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> our biodata </title>
+  <style>
+    /* ----- Global Styles ----- */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #0a0f1a, #000);
+      color: #00ffff;
+      overflow-x: hidden;
+      height: 100vh;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 60px;
+      letter-spacing: 2px;
+      text-shadow: 0 0 15px #00ffff;
+      animation: glow 3s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #00ffff; }
+      to { text-shadow: 0 0 25px #00ffcc, 0 0 40px #00ffff; }
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-top: 80px;
+      transition: all 0.5s ease;
+    }
+
+    /* ----- Card Styles ----- */
+    .card {
+      position: relative;
+      width: 260px;
+      height: 360px;
+      background: rgba(0, 255, 255, 0.08);
+      border: 2px solid #00ffff;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+      backdrop-filter: blur(8px);
+      overflow: hidden;
+      transition: 0.5s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px #00ffff;
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 2px solid #00ffff;
+    }
+
+    .card h2 {
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    .details {
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.6s ease;
+      padding: 0 15px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .card.active .details {
+      opacity: 1;
+      max-height: 300px;
+      padding-top: 10px;
+    }
+
+    /* ----- Futuristic Loading Animation ----- */
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 1s ease;
+    }
+
+    .loader div {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #00ffff;
+      border-top: 4px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      box-shadow: 0 0 20px #00ffff;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .loader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    footer {
+      text-align: center;
+      color: #00ffff;
+      font-size: 12px;
+      margin-top: 40px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loading Animation -->
+  <div class="loader" id="loader">
+    <div></div>
+  </div>
+
+  <h1>welcome to our biodata</h1>
+
+  <div class="container">
+    <!-- Card 1 -->
+    <div class="card" onclick="toggleDetails(this)">
+      <img src="dzikra.jpeg" alt="Muhammad Dzikra Irawan">
+      <h2>Muhammad Dzikra Irawan</h2>
+      <div class="details">
+        <p><strong>Nama Lengkap:</strong> Muhammad Dzikra Irawan</p>
+        <p><strong>Asal Kampus:</strong> Universitas Bhayangkara</p>
+        <p><strong>Hobi:</strong> Bermain gitar</p>
+        <p><strong>Deskripsi:</strong> tetaplah bernafas kawan.</p>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card" onclick="toggleDetails(this)">
+      <img src="bigel.jpeg" alt="Bigel">
+      <h2>Bigel</h2>
+      <div class="details">
+        <p><strong>Nama Lengkap:</strong> muhammad abigael</p>
+        <p><strong>Asal Kampus:</strong> Universitas Bhayangkara</p>
+        <p><strong>Hobi:</strong> makan mie ayam </p>
+        <p><strong>Deskripsi:</strong> hidup teknik.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>©fuckk|thanks for your attention </footer>
+
+  <script>
+    // Loading Animation Control
+    window.addEventListener("load", () => {
+      const loader = document.getElementById("loader");
+      setTimeout(() => {
+        loader.classList.add("hidden");
+      }, 1500);
+    });
+
+    // Card Toggle Animation
+    function toggleDetails(card) {
+      const allCards = document.querySelectorAll(".card");
+      allCards.forEach(c => {
+        if (c !== card) c.classList.remove("active");
+      });
+      card.classList.toggle("active");
+    }
+  </script>
+</body>
+</html>
